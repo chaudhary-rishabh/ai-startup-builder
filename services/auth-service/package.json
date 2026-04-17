@@ -21,7 +21,7 @@
     "@repo/db": "workspace:*",
     "@repo/types": "workspace:*",
     "@repo/validators": "workspace:*",
-    "bcryptjs": "^2.4.3",
+    "bcryptjs": "^3.0.3",
     "drizzle-orm": "^0.32.0",
     "hono": "^4.5.0",
     "ioredis": "^5.4.0",
@@ -34,7 +34,7 @@
   "devDependencies": {
     "@testcontainers/postgresql": "^11.14.0",
     "@testcontainers/redis": "^11.14.0",
-    "@types/bcryptjs": "^2.4.6",
+    "@types/bcryptjs": "^3.0.0",
     "@types/node": "^22.0.0",
     "@types/pg": "^8.11.0",
     "@types/qrcode": "^1.5.5",
