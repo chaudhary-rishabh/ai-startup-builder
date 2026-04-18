@@ -21,7 +21,6 @@ coverage/
 # ─────────────────────────────────────────────────────────────────
 # Environment files — .env.example is intentionally committed
 # ─────────────────────────────────────────────────────────────────
-.env.local
 .env.keys
 .env.*.local
 .env.development.local
@@ -73,3 +72,4 @@ test-results/
 # ─────────────────────────────────────────────────────────────────
 .changesets/
 *.tgz
+config.bat
