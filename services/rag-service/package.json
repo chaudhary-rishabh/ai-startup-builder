@@ -48,7 +48,7 @@
     "ioredis-mock": "^8.9.0",
     "testcontainers": "^10.16.0",
     "tsx": "^4.16.0",
-    "typescript": "^5.5.0",
+    "typescript": "^6.0.3",
     "vitest": "^2.0.0"
   }
 }
