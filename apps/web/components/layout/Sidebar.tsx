@@ -1,7 +1,7 @@
 'use client'
 
 import { AnimatePresence, motion } from 'framer-motion'
-import { Brain, Search, Settings, Star } from 'lucide-react'
+import { Brain, ChevronDown, ChevronRight, Rocket, Search, Settings, Star } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useMemo, useState } from 'react'
@@ -60,7 +60,7 @@ function SidebarContent({ collapsed, onNavigate }: { collapsed: boolean; onNavig
       >
         <div className="mb-3">{<ModeToggle compact={collapsed} />}</div>
         <div className="mb-4 flex items-center gap-2 text-heading">
-          <span>🚀</span>
+          <Rocket className="w-5 h-5 text-muted" />
           {!collapsed ? <span className="font-display text-[15px] font-bold">AI Startup Builder</span> : null}
         </div>
 
@@ -120,8 +120,8 @@ function SidebarContent({ collapsed, onNavigate }: { collapsed: boolean; onNavig
           className="mt-4 flex items-center justify-between text-[10px] uppercase tracking-[0.08em] text-muted"
           onClick={() => setStarredOpen((current) => !current)}
         >
-          <span>{collapsed ? '★' : 'STARRED ★'}</span>
-          {!collapsed ? <span>{starredOpen ? '⌄' : '›'}</span> : null}
+          <span>{collapsed ? <Star className="w-3 h-3" /> : 'STARRED'}</span>
+          {!collapsed ? starredOpen ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" /> : null}
         </button>
         <AnimatePresence initial={false}>
           {starredOpen ? (
@@ -144,7 +144,7 @@ function SidebarContent({ collapsed, onNavigate }: { collapsed: boolean; onNavig
                   >
                     <span>{project.emoji}</span>
                     {!collapsed ? <span className="min-w-0 flex-1 truncate text-[13px]">{project.name}</span> : null}
-                    <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
+                    <Star className="h-3 w-3 text-muted" />
                   </button>
                 ))}
               </div>

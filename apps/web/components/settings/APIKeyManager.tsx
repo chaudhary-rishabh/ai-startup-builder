@@ -105,7 +105,7 @@ export function APIKeyManager(): JSX.Element {
             onInteractOutside={(e) => e.preventDefault()}
           >
             <Dialog.Title className="text-lg font-semibold text-heading">Save your API key</Dialog.Title>
-            <p className="mt-2 text-sm text-error">⚠️ Copy this now — you won&apos;t see it again</p>
+            <p className="mt-2 text-sm text-error">Copy this now — you won&apos;t see it again</p>
             {reveal ? (
               <div className="mt-4 flex items-start gap-2 rounded-md bg-bg p-3 font-mono text-xs text-heading">
                 <code className="flex-1 break-all">{reveal.secret}</code>

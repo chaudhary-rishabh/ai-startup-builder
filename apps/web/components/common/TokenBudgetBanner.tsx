@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { AlertOctagon, AlertTriangle, X } from 'lucide-react'
+import { AlertOctagon, AlertTriangle, CreditCard, X } from 'lucide-react'
 
 import { useCreditState } from '@/components/providers/CreditStateProvider'
 import { useUIStore } from '@/store/uiStore'
@@ -22,7 +22,7 @@ export function TokenBudgetBanner(): JSX.Element | null {
         role="status"
       >
         <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center gap-2 text-sm text-amber-950">
-          <span aria-hidden>💳</span>
+          <CreditCard className="w-4 h-4" />
           <span className="font-medium">
             {isOneTimeCredits
               ? 'Your 50,000 free credits have been used'

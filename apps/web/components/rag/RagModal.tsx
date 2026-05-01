@@ -5,6 +5,7 @@ import * as Dialog from '@radix-ui/react-dialog'
 import * as Tabs from '@radix-ui/react-tabs'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import {
+  Brain,
   FileText,
   Loader2,
   Trash2,
@@ -257,7 +258,7 @@ export function RagModal({ open, onOpenChange }: RagModalProps): JSX.Element {
           <div className="flex items-start justify-between border-b border-divider px-6 py-4">
             <div>
               <Dialog.Title className="font-display text-lg text-heading">
-                🧠 My AI Brain
+                <Brain className="w-5 h-5 inline text-muted mr-1" /> My AI Brain
               </Dialog.Title>
               <Dialog.Description className="mt-1 text-sm text-muted">
                 Train the AI with your documents and URLs
@@ -449,7 +450,7 @@ export function RagModal({ open, onOpenChange }: RagModalProps): JSX.Element {
                 {urlBusy ? `Ingesting ${urlProgress.current} of ${urlProgress.total}…` : 'Ingest All'}
               </button>
               <div className="rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-900">
-                ⚠️ Crawling respects robots.txt. Private pages behind login cannot be ingested.
+                Crawling respects robots.txt. Private pages behind login cannot be ingested.
               </div>
             </Tabs.Content>
 

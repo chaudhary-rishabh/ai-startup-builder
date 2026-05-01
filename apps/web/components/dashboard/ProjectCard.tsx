@@ -1,7 +1,7 @@
 'use client'
 
 import { formatDistanceToNow } from 'date-fns'
-import { MoreHorizontal, Star } from 'lucide-react'
+import { Hand, Handshake, MoreHorizontal, Star, Zap } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
@@ -27,10 +27,18 @@ const phaseLabels: Record<number, string> = {
   6: 'Growth',
 }
 
+import type { LucideIcon } from 'lucide-react'
+
+const buildModeIcon: Record<Project['buildMode'], LucideIcon> = {
+  autopilot: Zap,
+  copilot: Handshake,
+  manual: Hand,
+}
+
 const buildModeLabel: Record<Project['buildMode'], string> = {
-  autopilot: '⚡ Autopilot',
-  copilot: '🤝 Copilot',
-  manual: '✋ Manual',
+  autopilot: 'Autopilot',
+  copilot: 'Copilot',
+  manual: 'Manual',
 }
 
 export function ProjectCard({ project }: { project: Project }): JSX.Element {
@@ -42,7 +50,7 @@ export function ProjectCard({ project }: { project: Project }): JSX.Element {
 
   return (
     <article className="group relative rounded-card bg-card shadow-sm transition-shadow hover:shadow-md">
-      {project.isStarred ? <Star className="absolute right-3 top-3 h-4 w-4 fill-amber-400 text-amber-400" /> : null}
+      {project.isStarred ? <Star className="absolute right-3 top-3 h-4 w-4 text-muted" /> : null}
 
       <div className="flex items-center justify-between border-b border-divider px-4 py-4">
         <div className="flex min-w-0 items-center gap-2">
@@ -95,7 +103,10 @@ export function ProjectCard({ project }: { project: Project }): JSX.Element {
       </div>
 
       <div className="px-4 pb-3">
-        <span className="rounded-full bg-output px-2 py-0.5 text-[10px] text-heading">{buildModeLabel[project.buildMode]}</span>
+        <span className="rounded-full bg-output px-2 py-0.5 text-[10px] text-heading inline-flex items-center gap-1">
+          {(() => { const Icon = buildModeIcon[project.buildMode]; return <Icon className="w-3 h-3" />; })()}
+          {buildModeLabel[project.buildMode]}
+        </span>
       </div>
 
       {menuOpen ? (

@@ -79,7 +79,7 @@ export function NotificationPrefs(): JSX.Element {
               Saving…
             </>
           ) : null}
-          {saved && !saving ? <span className="text-success">Saved ✓</span> : null}
+          {saved && !saving ? <span className="text-success">Saved</span> : null}
         </div>
       </div>
 

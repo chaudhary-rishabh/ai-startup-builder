@@ -1,7 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { Zap, Handshake, Hand } from 'lucide-react'
 import type { BuildMode } from '@/types'
+import type { LucideIcon } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
 
@@ -10,23 +12,23 @@ interface BuildModeSelectorProps {
   onChange: (mode: BuildMode) => void
 }
 
-const options: Array<{ mode: BuildMode; icon: string; title: string; description: string; popular?: boolean }> = [
+const options: Array<{ mode: BuildMode; icon: LucideIcon; title: string; description: string; popular?: boolean }> = [
   {
     mode: 'autopilot',
-    icon: '⚡',
+    icon: Zap,
     title: 'Autopilot',
     description: 'Sit back - all agents run in sequence. Zero interruptions.',
   },
   {
     mode: 'copilot',
-    icon: '🤝',
+    icon: Handshake,
     title: 'Copilot',
     description: 'Agents pause between phases. You answer quick questions to guide the output.',
     popular: true,
   },
   {
     mode: 'manual',
-    icon: '✋',
+    icon: Hand,
     title: 'Manual',
     description: 'You trigger each agent yourself. Full control, your pace.',
   },
@@ -72,7 +74,7 @@ export function BuildModeSelector({ value, onChange }: BuildModeSelectorProps): 
               selected ? 'border-brand bg-brand/5' : 'border-divider hover:border-muted',
             )}
           >
-            <p className="text-2xl">{option.icon}</p>
+            <option.icon className="w-6 h-6 text-muted" />
             <div className="mt-2 flex items-center gap-2">
               <p className="text-sm font-semibold text-heading">{option.title}</p>
               {option.popular ? (

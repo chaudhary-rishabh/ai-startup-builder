@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { Monitor, Palette } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
 import { useDesignMode } from '@/hooks/useDesignMode'
@@ -23,22 +24,24 @@ export function ModeToggle({ compact = false }: { compact?: boolean }): JSX.Elem
         disabled={isModeTransitioning}
         onClick={switchToDesign}
         className={cn(
-          'relative z-10 rounded-full px-3 py-1.5 text-xs font-semibold transition-colors',
+          'relative z-10 rounded-full px-3 py-1.5 text-xs font-semibold transition-colors inline-flex items-center gap-1',
           mode === 'design' ? 'text-white' : 'text-heading',
         )}
       >
-        {compact ? '🎨' : '🎨 Design'}
+        <Palette className="w-3.5 h-3.5" />
+        {!compact && 'Design'}
       </button>
       <button
         type="button"
         disabled={isModeTransitioning}
         onClick={switchToDev}
         className={cn(
-          'relative z-10 rounded-full px-3 py-1.5 text-xs font-semibold transition-colors',
+          'relative z-10 rounded-full px-3 py-1.5 text-xs font-semibold transition-colors inline-flex items-center gap-1',
           mode === 'dev' ? 'text-white' : 'text-heading',
         )}
       >
-        {compact ? '💻' : '💻 Dev'}
+        <Monitor className="w-3.5 h-3.5" />
+        {!compact && 'Dev'}
       </button>
     </div>
   )
