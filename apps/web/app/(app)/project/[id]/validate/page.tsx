@@ -36,7 +36,7 @@ export default function ValidatePage({ params }: { params: Promise<{ id: string 
       <ChatPanel
         projectId={projectId}
         phase={1}
-        headerLabel="Idea Validator 🧠"
+        headerLabel="Idea Validator"
         placeholder="Describe your startup idea..."
         messages={messages}
         isAgentRunning={isAnyAgentRunning}

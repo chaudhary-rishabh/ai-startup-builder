@@ -177,7 +177,7 @@ export default function PlanPage({ params }: { params: Promise<{ id: string }> }
       <ChatPanel
         projectId={projectId}
         phase={2}
-        headerLabel="Planning Copilot 📋"
+        headerLabel="Planning Copilot"
         placeholder={placeholderMap[activeTab]}
         chatContext={activeTab}
         messages={messages}

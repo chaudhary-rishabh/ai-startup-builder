@@ -35,7 +35,7 @@ export default function DashboardPage(): JSX.Element {
       <section className="mb-6 flex items-end justify-between gap-4">
         <div>
           <h1 className="font-display text-[22px] font-bold text-heading">
-            {getGreeting()}, {user?.name ?? 'Founder'} 👋
+            {getGreeting()}, {user?.name ?? 'Founder'}
           </h1>
           <p className="text-sm text-muted">{activeCount} active projects. Keep building.</p>
         </div>
@@ -60,7 +60,7 @@ export default function DashboardPage(): JSX.Element {
 
       {starredCount > 0 ? (
         <section className="mb-8">
-          <p className="mb-3 text-[10px] uppercase tracking-[0.08em] text-muted">STARRED ★</p>
+          <p className="mb-3 text-[10px] uppercase tracking-[0.08em] text-muted">STARRED</p>
           <StarredRow />
         </section>
       ) : null}

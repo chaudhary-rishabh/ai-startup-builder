@@ -34,7 +34,7 @@ export default function LandingPage(): JSX.Element {
     <div className="flex min-h-screen flex-col md:flex-row">
       <section className="hidden w-full bg-sidebar px-10 py-14 md:flex md:w-1/2 md:flex-col md:justify-between">
         <div>
-          <p className="mb-8 font-display text-[15px] font-bold text-heading">🚀 AI Startup Builder</p>
+          <p className="mb-8 font-display text-[15px] font-bold text-heading">AI Startup Builder</p>
           <h1 className="max-w-sm font-display text-[28px] font-bold leading-tight text-heading">
             Build your startup — idea to launch — in one AI workspace.
           </h1>

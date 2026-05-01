@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { Monitor } from 'lucide-react'
 import { use, useCallback, useEffect, useRef, useState } from 'react'
 import { toast } from 'sonner'
 
@@ -86,7 +87,7 @@ export default function DeployPage({ params }: { params: Promise<{ id: string }>
           animate={{ opacity: 0 }}
           transition={{ duration: 0.4 }}
         >
-          <span className="text-[32px]">💻</span>
+          <Monitor className="w-8 h-8 text-muted" />
           <p className="mt-2 text-sm text-slate-300">Entering Dev Mode…</p>
         </motion.div>
       ) : null}

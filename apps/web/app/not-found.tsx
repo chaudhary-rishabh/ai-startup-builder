@@ -1,10 +1,11 @@
+import { Rocket } from 'lucide-react'
 import Link from 'next/link'
 
 export default function NotFoundPage(): JSX.Element {
   return (
     <main className="flex min-h-screen items-center justify-center bg-bg px-4">
       <section className="text-center">
-        <p className="text-[64px] leading-none">🚀</p>
+        <Rocket className="w-16 h-16 mx-auto text-muted" />
         <h1 className="mt-4 font-display text-[32px] font-bold text-heading">404 — Page not found</h1>
         <p className="mt-2 text-sm text-muted">The page you&apos;re looking for doesn&apos;t exist.</p>
         <Link
