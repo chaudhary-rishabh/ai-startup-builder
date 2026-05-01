@@ -95,9 +95,9 @@ export function CodeEditor({
           },
         })
       }
-      bind('asb-explain', '✨ Explain this code', onExplainSelection)
-      bind('asb-refactor', '🔄 Refactor', onRefactorSelection)
-      bind('asb-fix', '🐛 Fix', onFixSelection)
+      bind('asb-explain', 'Explain this code', onExplainSelection)
+      bind('asb-refactor', 'Refactor', onRefactorSelection)
+      bind('asb-fix', 'Fix', onFixSelection)
     },
     [onExplainSelection, onFixSelection, onRefactorSelection, onSave],
   )

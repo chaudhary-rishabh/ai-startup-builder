@@ -1,7 +1,8 @@
 'use client'
 
 import * as Tooltip from '@radix-ui/react-tooltip'
-import { CheckCircle2, Loader2 } from 'lucide-react'
+import { Atom, CheckCircle2, Link as LinkIcon, Loader2, Plug, Ruler, Wrench } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { toast } from 'sonner'
@@ -14,12 +15,12 @@ type AgentKey = 'schema_gen' | 'api_gen' | 'backend' | 'frontend' | 'integration
 
 const ORDER: AgentKey[] = ['schema_gen', 'api_gen', 'backend', 'frontend', 'integration']
 
-const DEFS: { key: AgentKey; label: string; emoji: string }[] = [
-  { key: 'schema_gen', label: 'Generate Schema', emoji: '📐' },
-  { key: 'api_gen', label: 'Generate API', emoji: '🔌' },
-  { key: 'backend', label: 'Generate Backend', emoji: '⚙️' },
-  { key: 'frontend', label: 'Generate Frontend', emoji: '⚛️' },
-  { key: 'integration', label: 'Connect All', emoji: '🔗' },
+const DEFS: { key: AgentKey; label: string; icon: LucideIcon }[] = [
+  { key: 'schema_gen', label: 'Generate Schema', icon: Ruler },
+  { key: 'api_gen', label: 'Generate API', icon: Plug },
+  { key: 'backend', label: 'Generate Backend', icon: Wrench },
+  { key: 'frontend', label: 'Generate Frontend', icon: Atom },
+  { key: 'integration', label: 'Connect All', icon: LinkIcon },
 ]
 
 function tooltipMessage(key: AgentKey): string {
@@ -337,14 +338,14 @@ export function AgentButtons({
           {run.status === 'running' ? <Loader2 className="animate-spin text-[#0D9488]" size={14} /> : null}
           {run.status === 'complete' && !isError ? <CheckCircle2 size={14} className="text-green-600" /> : null}
           {run.status !== 'starting' && run.status !== 'running' && !(run.status === 'complete' && !isError) ? (
-            <span>{def.emoji}</span>
+            <def.icon className="w-4 h-4" />
           ) : null}
           <span>
             {run.status === 'starting' ? 'Starting…' : null}
             {run.status === 'running' ? 'Generating…' : null}
-            {run.status === 'complete' && !isError ? `✓ ${def.label} done — ${count} files` : null}
-            {isError ? '✗ Failed — retry?' : null}
-            {run.status === 'idle' && !isError ? `${def.emoji} ${def.label}` : null}
+            {run.status === 'complete' && !isError ? `${def.label} done — ${count} files` : null}
+            {isError ? 'Failed — retry?' : null}
+            {run.status === 'idle' && !isError ? def.label : null}
           </span>
         </span>
       </button>

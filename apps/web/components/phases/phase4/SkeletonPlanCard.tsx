@@ -1,6 +1,7 @@
 'use client'
 
 import { AnimatePresence, motion } from 'framer-motion'
+import { ClipboardList } from 'lucide-react'
 
 import type { GenerationPlan } from '@/types'
 
@@ -28,7 +29,7 @@ export function SkeletonPlanCard({ plan, isVisible }: SkeletonPlanCardProps): JS
               data-testid="generation-plan-card"
             >
               <p className="text-[13px] font-medium" style={{ color: '#0D9488' }}>
-                <span aria-hidden>📋</span> Generation plan ready
+                <ClipboardList className="w-4 h-4 inline text-[#0D9488] mr-1" /> Generation plan ready
               </p>
               <p className="mt-1 text-xs text-slate-300" data-testid="generation-plan-summary">
                 {plan.totalFiles} files across {plan.totalBatches} batches
