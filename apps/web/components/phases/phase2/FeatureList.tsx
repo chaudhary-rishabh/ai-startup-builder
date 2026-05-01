@@ -28,7 +28,7 @@ function SaveIndicator({ saveStatus }: { saveStatus: 'idle' | 'saving' | 'saved'
     return (
       <span className="inline-flex items-center gap-1 text-xs text-success">
         <Check size={12} aria-label="Saved" />
-        Saved ✓
+        Saved
       </span>
     )
   }

@@ -2,7 +2,7 @@
 
 import * as AlertDialog from '@radix-ui/react-alert-dialog'
 import { useQuery } from '@tanstack/react-query'
-import { CheckCircle2, Circle } from 'lucide-react'
+import { CheckCircle2, Circle, Rocket } from 'lucide-react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { toast } from 'sonner'
 
@@ -187,7 +187,7 @@ export function DeployWizard({
                 className="flex w-full items-center justify-between rounded-md border border-slate-600 bg-white px-3 py-2 text-sm font-medium text-slate-900"
               >
                 Vercel
-                <span>{oauth.vercel ? '✓ Connected' : 'Connect'}</span>
+                <span className="inline-flex items-center gap-1">{oauth.vercel ? <><CheckCircle2 className="w-4 h-4 text-green-600" /> Connected</> : 'Connect'}</span>
               </button>
             ) : null}
             {platforms.railway ? (
@@ -197,7 +197,7 @@ export function DeployWizard({
                 className="flex w-full items-center justify-between rounded-md border border-slate-600 bg-white px-3 py-2 text-sm font-medium text-slate-900"
               >
                 Railway
-                <span>{oauth.railway ? '✓ Connected' : 'Connect'}</span>
+                <span className="inline-flex items-center gap-1">{oauth.railway ? <><CheckCircle2 className="w-4 h-4 text-green-600" /> Connected</> : 'Connect'}</span>
               </button>
             ) : null}
             {platforms.vercel || platforms.railway || platforms.supabase ? (
@@ -207,7 +207,7 @@ export function DeployWizard({
                 className="flex w-full items-center justify-between rounded-md border border-slate-600 bg-white px-3 py-2 text-sm font-medium text-slate-900"
               >
                 GitHub
-                <span>{oauth.github ? '✓ Connected' : 'Connect'}</span>
+                <span className="inline-flex items-center gap-1">{oauth.github ? <><CheckCircle2 className="w-4 h-4 text-green-600" /> Connected</> : 'Connect'}</span>
               </button>
             ) : null}
             <button
@@ -311,7 +311,7 @@ export function DeployWizard({
                   disabled={!allTestsPassed || deployRun.status === 'running' || deployRun.status === 'starting'}
                   className="flex h-12 w-full items-center justify-center rounded-md bg-[#0D9488] text-sm font-semibold text-white disabled:opacity-50"
                 >
-                  🚀 Deploy to Production
+                  <Rocket className="w-4 h-4" /> Deploy to Production
                 </button>
               </AlertDialog.Trigger>
               <AlertDialog.Portal>

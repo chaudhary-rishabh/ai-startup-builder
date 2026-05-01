@@ -2,7 +2,8 @@
 
 import * as Checkbox from '@radix-ui/react-checkbox'
 import confetti from 'canvas-confetti'
-import { Check } from 'lucide-react'
+import { Check, Rocket, Search, Smartphone, DollarSign, Wrench, Target, TrendingUp } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { toast } from 'sonner'
@@ -30,11 +31,18 @@ const channelChip: Record<GrowthActionItem['channel'], string> = {
   Product: 'bg-green-100 text-green-700',
 }
 
+const channelIcon: Record<GrowthActionItem['channel'], LucideIcon> = {
+  SEO: Search,
+  Social: Smartphone,
+  Paid: DollarSign,
+  Product: Wrench,
+}
+
 const channelLabel: Record<GrowthActionItem['channel'], string> = {
-  SEO: '🔍 SEO',
-  Social: '📱 Social',
-  Paid: '💰 Paid',
-  Product: '⚙️ Product',
+  SEO: 'SEO',
+  Social: 'Social',
+  Paid: 'Paid',
+  Product: 'Product',
 }
 
 const effortChip: Record<GrowthActionItem['effort'], string> = {
@@ -138,7 +146,7 @@ export function GrowthActions({ projectId, actions, playbookSteps }: GrowthActio
   return (
     <aside className="flex h-full w-[280px] shrink-0 flex-col border-l border-divider bg-card">
       <div className="border-b border-divider p-4">
-        <h2 className="font-display text-base text-heading">Growth Actions 📈</h2>
+        <h2 className="font-display text-base text-heading inline-flex items-center gap-2">Growth Actions <TrendingUp className="w-4 h-4 text-muted" /></h2>
         <p className="mt-1 text-xs text-muted">AI-generated recommendations</p>
       </div>
       <div className="min-h-0 flex-1 overflow-y-auto p-4">
@@ -146,7 +154,8 @@ export function GrowthActions({ projectId, actions, playbookSteps }: GrowthActio
           <div key={a.id} className="mb-2 rounded-card bg-bg p-3">
             <p className="text-sm font-medium text-heading">{a.title}</p>
             <div className="mt-2 flex flex-wrap items-center gap-2">
-              <span className={`rounded-chip px-2 py-0.5 text-[10px] font-medium ${channelChip[a.channel]}`}>
+              <span className={`rounded-chip px-2 py-0.5 text-[10px] font-medium inline-flex items-center gap-1 ${channelChip[a.channel]}`}>
+                {(() => { const Icon = channelIcon[a.channel]; return <Icon className="w-3 h-3" />; })()}
                 {channelLabel[a.channel]}
               </span>
               <span className={`rounded-chip px-2 py-0.5 text-[10px] font-medium ${effortChip[a.effort]}`}>
@@ -179,7 +188,7 @@ export function GrowthActions({ projectId, actions, playbookSteps }: GrowthActio
         ) : null}
 
         <details className="rounded-card border border-divider bg-bg p-3" open>
-          <summary className="cursor-pointer text-sm font-medium text-heading">🎯 First 100 Users Playbook</summary>
+          <summary className="cursor-pointer text-sm font-medium text-heading inline-flex items-center gap-1"><Target className="w-3.5 h-3.5 text-muted" /> First 100 Users Playbook</summary>
           <div className="mt-3 flex gap-3">
             {ring}
             <ul className="min-w-0 flex-1 space-y-2">
@@ -203,7 +212,7 @@ export function GrowthActions({ projectId, actions, playbookSteps }: GrowthActio
                         <Check className="h-3 w-3" />
                       </Checkbox.Indicator>
                     </Checkbox.Root>
-                    <span>{done ? <span className="text-success">✓ </span> : null}{step}</span>
+                    <span>{done ? <Check className="w-3 h-3 inline text-success" /> : null}{step}</span>
                   </label>
                 )
               })}
@@ -218,7 +227,7 @@ export function GrowthActions({ projectId, actions, playbookSteps }: GrowthActio
           onClick={() => void markLaunched()}
           className="flex h-11 w-full items-center justify-center rounded-md bg-success text-sm font-semibold text-white hover:brightness-95"
         >
-          🚀 Mark as Launched
+          <Rocket className="w-4 h-4" /> Mark as Launched
         </button>
       </div>
     </aside>

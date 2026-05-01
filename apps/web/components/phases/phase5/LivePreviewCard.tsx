@@ -2,7 +2,7 @@
 
 import confetti from 'canvas-confetti'
 import { motion } from 'framer-motion'
-import { Share2 } from 'lucide-react'
+import { PartyPopper, Share2 } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -55,7 +55,7 @@ export function LivePreviewCard({ liveUrl, projectName }: LivePreviewCardProps):
       transition={{ duration: 2.4, ease: 'easeOut' }}
     >
       <div className="text-center">
-        <p className="text-3xl">🎉</p>
+        <PartyPopper className="w-8 h-8 mx-auto text-muted" />
         <h3 className="mt-2 font-display text-xl text-heading">Your startup is live!</h3>
         <p className="mt-1 text-xs text-muted">{projectName}</p>
         <Link

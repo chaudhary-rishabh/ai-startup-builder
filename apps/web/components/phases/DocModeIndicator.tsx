@@ -22,8 +22,8 @@ export function DocModeIndicator({ docMode }: { docMode: SSEDocModeEvent | null 
   const docsLabel = docMode.docCount === 1 ? 'doc' : 'docs'
   const description =
     docMode.mode === 'contextual_rag'
-      ? `🔍 Using ${docMode.docCount} ${docsLabel} (contextual RAG — top 5 chunks)`
-      : `📄 Using ${docMode.docCount} ${docsLabel} (${modeText(docMode.mode)} — ${formatTokenCount(docMode.tokenCount)} tokens)`
+      ? `Using ${docMode.docCount} ${docsLabel} (contextual RAG — top 5 chunks)`
+      : `Using ${docMode.docCount} ${docsLabel} (${modeText(docMode.mode)} — ${formatTokenCount(docMode.tokenCount)} tokens)`
 
   return (
     <AnimatePresence>

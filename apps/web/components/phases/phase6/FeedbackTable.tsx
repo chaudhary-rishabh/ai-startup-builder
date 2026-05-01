@@ -1,7 +1,8 @@
 'use client'
 
 import { AnimatePresence, motion } from 'framer-motion'
-import { ArrowDown, ArrowUp } from 'lucide-react'
+import { ArrowDown, ArrowUp, Meh, ThumbsDown, ThumbsUp } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { Fragment, useMemo, useState } from 'react'
 
 export interface FeedbackEntry {
@@ -26,10 +27,16 @@ function sentimentBadge(s: FeedbackEntry['sentiment']): string {
   return 'bg-divider text-muted'
 }
 
+const sentimentIcon: Record<FeedbackEntry['sentiment'], LucideIcon> = {
+  positive: ThumbsUp,
+  negative: ThumbsDown,
+  neutral: Meh,
+}
+
 function sentimentLabel(s: FeedbackEntry['sentiment']): string {
-  if (s === 'positive') return '👍 Positive'
-  if (s === 'negative') return '👎 Negative'
-  return '😐 Neutral'
+  if (s === 'positive') return 'Positive'
+  if (s === 'negative') return 'Negative'
+  return 'Neutral'
 }
 
 export function FeedbackTable({ entries, isStreaming, onAnalyzeFeedback }: FeedbackTableProps): JSX.Element {
@@ -112,7 +119,8 @@ export function FeedbackTable({ entries, isStreaming, onAnalyzeFeedback }: Feedb
                 <tr className="cursor-pointer border-b border-divider hover:bg-bg" onClick={() => setExpanded(open ? null : row.id)}>
                   <td className="px-4 py-3 text-[13px] text-heading">{short}</td>
                   <td className="px-4 py-3">
-                    <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${sentimentBadge(row.sentiment)}`}>
+                    <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium inline-flex items-center gap-1 ${sentimentBadge(row.sentiment)}`}>
+                      {(() => { const Icon = sentimentIcon[row.sentiment]; return <Icon className="w-3 h-3" />; })()}
                       {sentimentLabel(row.sentiment)}
                     </span>
                   </td>

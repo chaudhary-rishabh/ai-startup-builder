@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { RotateCcw } from 'lucide-react'
+import { Check, RotateCcw } from 'lucide-react'
 import type { ReactNode } from 'react'
 
 interface OutputCardProps {
@@ -37,7 +37,7 @@ export function OutputCard({
               Generating…
             </span>
           ) : (
-            <span className="rounded-full bg-success-bg px-2 py-1 text-[10px] font-semibold text-success">✓ Done</span>
+            <span className="rounded-full bg-success-bg px-2 py-1 text-[10px] font-semibold text-success inline-flex items-center gap-1"><Check className="w-3 h-3" /> Done</span>
           )}
           {onRefine ? (
             <button

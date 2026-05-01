@@ -1,6 +1,6 @@
 'use client'
 
-import { Check, Loader2, XCircle } from 'lucide-react'
+import { Check, Loader2, PartyPopper, XCircle } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useEffect, useRef } from 'react'
 import { toast } from 'sonner'
@@ -24,7 +24,7 @@ export function AgentStatusStrip({ agents, phase = 1 }: AgentStatusStripProps): 
   useEffect(() => {
     if (!allComplete || firedConfettiRef.current) return
     firedConfettiRef.current = true
-    toast.success(`🎉 Phase ${phase} complete! Ready to move on?`)
+    toast.success(`Phase ${phase} complete! Ready to move on?`)
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     void (async () => {

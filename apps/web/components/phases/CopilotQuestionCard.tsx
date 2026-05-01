@@ -1,5 +1,6 @@
 'use client'
 
+import { Handshake, Save } from 'lucide-react'
 import { useMemo, useState } from 'react'
 
 import { submitCopilotPreferences } from '@/api/agents.api'
@@ -51,7 +52,7 @@ export function CopilotQuestionCard({
 
   return (
     <div className="mx-auto mt-5 max-w-[480px] rounded-card border border-divider bg-card p-6 shadow-md">
-      <p className="font-display text-base font-bold text-heading">🤝 Quick question before Phase {phase + 1}</p>
+      <p className="font-display text-base font-bold text-heading inline-flex items-center gap-1"><Handshake className="w-4 h-4 text-muted" /> Quick question before Phase {phase + 1}</p>
       <p className="mt-1 text-xs text-muted">Your answers guide the AI agents.</p>
 
       <div className="mt-4 space-y-4 text-sm">
@@ -62,7 +63,7 @@ export function CopilotQuestionCard({
               <label key={option} className={`cursor-pointer rounded-md border px-2 py-2 text-xs ${scale === option ? 'border-brand bg-brand/10' : 'border-divider'}`}>
                 <input className="sr-only" type="radio" name="scale" checked={scale === option} onChange={() => setScale(option)} />
                 {option}
-                {memorySet.scale && episodicMemory?.scale === option ? <span className="ml-1 text-[10px]">💾 From last project</span> : null}
+                {memorySet.scale && episodicMemory?.scale === option ? <span className="ml-1 text-[10px]"><Save className="w-3 h-3 inline text-muted" /> From last project</span> : null}
               </label>
             ))}
           </div>
@@ -75,7 +76,7 @@ export function CopilotQuestionCard({
               <label key={option} className={`cursor-pointer rounded-md border px-2 py-2 text-xs ${platform === option ? 'border-brand bg-brand/10' : 'border-divider'}`}>
                 <input className="sr-only" type="radio" name="platform" checked={platform === option} onChange={() => setPlatform(option)} />
                 {option}
-                {memorySet.platform && episodicMemory?.platform === option ? <span className="ml-1 text-[10px]">💾 From last project</span> : null}
+                {memorySet.platform && episodicMemory?.platform === option ? <span className="ml-1 text-[10px]"><Save className="w-3 h-3 inline text-muted" /> From last project</span> : null}
               </label>
             ))}
           </div>
@@ -112,7 +113,7 @@ export function CopilotQuestionCard({
             <option>Monolith</option>
             <option>Microservices</option>
           </select>
-          {memorySet.architecture ? <span className="mt-1 inline-block text-[10px]">💾 From last project</span> : null}
+          {memorySet.architecture ? <span className="mt-1 inline-block text-[10px]"><Save className="w-3 h-3 inline text-muted" /> From last project</span> : null}
         </div>
 
         <fieldset aria-label="brandFeel">
@@ -122,7 +123,7 @@ export function CopilotQuestionCard({
               <label key={option} className={`cursor-pointer rounded-md border px-2 py-2 text-xs ${brandFeel === option ? 'border-brand bg-brand/10' : 'border-divider'}`}>
                 <input className="sr-only" type="radio" name="brandFeel" checked={brandFeel === option} onChange={() => setBrandFeel(option)} />
                 {option}
-                {memorySet.brandFeel && episodicMemory?.brandFeel === option ? <span className="ml-1 text-[10px]">💾 From last project</span> : null}
+                {memorySet.brandFeel && episodicMemory?.brandFeel === option ? <span className="ml-1 text-[10px]"><Save className="w-3 h-3 inline text-muted" /> From last project</span> : null}
               </label>
             ))}
           </div>

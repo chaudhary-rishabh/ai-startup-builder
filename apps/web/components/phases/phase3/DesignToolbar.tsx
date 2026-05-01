@@ -3,7 +3,8 @@
 import { useState } from 'react'
 import type { Dispatch, SetStateAction } from 'react'
 import { useRouter } from 'next/navigation'
-import { Loader2 } from 'lucide-react'
+import { Laptop, Loader2, Monitor, Smartphone } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 
 import { advancePhase } from '@/api/projects.api'
 import { GenerateFrameButton } from '@/components/phases/phase3/GenerateFrameButton'
@@ -21,10 +22,10 @@ interface DesignToolbarProps {
   isGeneratingAll: boolean
 }
 
-const viewportOptions = [
-  { label: '🖥️ Desktop 1440px', width: 1440 },
-  { label: '💻 Laptop 1024px', width: 1024 },
-  { label: '📱 Mobile 375px', width: 375 },
+const viewportOptions: { label: string; icon: LucideIcon; width: number }[] = [
+  { label: 'Desktop 1440px', icon: Monitor, width: 1440 },
+  { label: 'Laptop 1024px', icon: Laptop, width: 1024 },
+  { label: 'Mobile 375px', icon: Smartphone, width: 375 },
 ]
 
 export function DesignToolbar({

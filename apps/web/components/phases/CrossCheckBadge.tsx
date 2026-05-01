@@ -38,8 +38,8 @@ export function CrossCheckBadge({ crossChecks }: { crossChecks: SSECrossCheckEve
               <span className="inline-flex items-center gap-2">
                 {check.passed ? <CheckCircle2 size={14} /> : <AlertTriangle size={14} />}
                 {check.passed
-                  ? `✓ Quality check ${check.check} passed`
-                  : `⚠ Check ${check.check}: ${check.issues.length} issue${check.issues.length === 1 ? '' : 's'} auto-fixed`}
+                  ? `Quality check ${check.check} passed`
+                  : `Check ${check.check}: ${check.issues.length} issue${check.issues.length === 1 ? '' : 's'} auto-fixed`}
               </span>
               {!check.passed && isExpanded ? (
                 <ul className="mt-2 list-disc pl-4 text-[11px] text-yellow-900">

@@ -2,7 +2,7 @@
 
 import type { OnMount } from '@monaco-editor/react'
 import dynamic from 'next/dynamic'
-import { CheckCircle2, ChevronRight, Loader2, MinusCircle, XCircle } from 'lucide-react'
+import { CheckCircle2, ChevronRight, FlaskConical, Loader2, MinusCircle, XCircle } from 'lucide-react'
 import { useCallback, useState } from 'react'
 
 import { useAgentRun } from '@/hooks/useAgentRun'
@@ -160,7 +160,7 @@ export function TestRunner({ projectId, onAllTestsPass, onFixTestRequest }: Test
         <div className="flex min-h-0 flex-1 flex-col overflow-y-auto p-6">
           {!summary && !showRunning ? (
             <div className="flex flex-1 flex-col items-center justify-center gap-4 py-16 text-center">
-              <span className="text-4xl">🧪</span>
+              <FlaskConical className="w-10 h-10 text-muted" />
               <p className="text-lg text-slate-200">No test results yet</p>
               <button
                 type="button"
@@ -198,14 +198,14 @@ export function TestRunner({ projectId, onAllTestsPass, onFixTestRequest }: Test
                 Re-run tests
               </button>
               <div className="flex flex-wrap gap-2">
-                <span className="rounded-full bg-green-500/15 px-3 py-1 text-xs font-medium text-green-400">
-                  ✓ {summary.passed} Passed
+                <span className="rounded-full bg-green-500/15 px-3 py-1 text-xs font-medium text-green-400 inline-flex items-center gap-1">
+                  <CheckCircle2 className="w-3 h-3" /> {summary.passed} Passed
                 </span>
-                <span className="rounded-full bg-red-500/15 px-3 py-1 text-xs font-medium text-red-400">
-                  ✗ {summary.failed} Failed
+                <span className="rounded-full bg-red-500/15 px-3 py-1 text-xs font-medium text-red-400 inline-flex items-center gap-1">
+                  <XCircle className="w-3 h-3" /> {summary.failed} Failed
                 </span>
-                <span className="rounded-full bg-amber-500/15 px-3 py-1 text-xs font-medium text-amber-300">
-                  ○ {summary.skipped} Skipped
+                <span className="rounded-full bg-amber-500/15 px-3 py-1 text-xs font-medium text-amber-300 inline-flex items-center gap-1">
+                  <MinusCircle className="w-3 h-3" /> {summary.skipped} Skipped
                 </span>
               </div>
 
