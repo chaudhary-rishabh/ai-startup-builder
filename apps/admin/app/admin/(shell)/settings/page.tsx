@@ -10,14 +10,16 @@ import { FeatureFlagsTable } from '@/components/settings/FeatureFlagsTable'
 import { SecuritySettings } from '@/components/settings/SecuritySettings'
 import type { FeatureFlag, SettingsTab } from '@/types'
 import { toast } from 'sonner'
+import { Cog, Mail, Link, Flag, Shield } from 'lucide-react'
 import { cn } from '@/lib/cn'
+import type { LucideIcon } from 'lucide-react'
 
-const TABS: { key: SettingsTab; label: string; icon: string }[] = [
-  { key: 'general', label: 'General', icon: '⚙️' },
-  { key: 'email', label: 'Email', icon: '📧' },
-  { key: 'integrations', label: 'Integrations', icon: '🔗' },
-  { key: 'feature-flags', label: 'Feature Flags', icon: '🚩' },
-  { key: 'security', label: 'Security', icon: '🛡️' },
+const TABS: { key: SettingsTab; label: string; icon: LucideIcon }[] = [
+  { key: 'general', label: 'General', icon: Cog },
+  { key: 'email', label: 'Email', icon: Mail },
+  { key: 'integrations', label: 'Integrations', icon: Link },
+  { key: 'feature-flags', label: 'Feature Flags', icon: Flag },
+  { key: 'security', label: 'Security', icon: Shield },
 ]
 
 export default function SettingsPage() {
@@ -124,7 +126,7 @@ export default function SettingsPage() {
     <div className="flex gap-6 max-w-5xl">
       <aside className="w-[200px] flex-shrink-0">
         <nav className="bg-card rounded-card shadow-sm p-2 space-y-0.5">
-          {TABS.map(({ key, label, icon }) => (
+          {TABS.map(({ key, label, icon: Icon }) => (
             <button
               key={key}
               type="button"
@@ -138,7 +140,7 @@ export default function SettingsPage() {
                   : 'text-muted hover:text-heading hover:bg-divider/60',
               )}
             >
-              <span>{icon}</span>
+              <Icon className="w-4 h-4" />
               <span>{label}</span>
             </button>
           ))}

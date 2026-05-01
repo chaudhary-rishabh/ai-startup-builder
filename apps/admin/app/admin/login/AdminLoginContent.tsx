@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Loader2, ShieldAlert, KeyRound } from 'lucide-react'
+import { Cog, Loader2, ShieldAlert, KeyRound } from 'lucide-react'
 import { adminLogin, adminVerifyTotp } from '@/lib/api/auth.api'
 import { useAdminAuthStore } from '@/store/adminAuthStore'
 import { cn } from '@/lib/cn'
@@ -146,7 +146,7 @@ export function AdminLoginContent() {
       <div className="relative z-10 w-full max-w-[480px] mx-4">
         <div className="bg-card rounded-panel shadow-lg p-10">
           <div className="text-center mb-8">
-            <span className="text-4xl">⚙️</span>
+            <Cog className="w-10 h-10 text-muted mx-auto" />
             <h1 className="font-display text-2xl text-heading mt-3">
               Admin Panel
             </h1>

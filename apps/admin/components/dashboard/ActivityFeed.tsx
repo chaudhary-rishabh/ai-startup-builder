@@ -21,53 +21,21 @@ interface ActivityFeedProps {
 }
 
 function EventIcon({ type }: { type: ActivityEvent['type'] }) {
-  const map: Record<
-    ActivityEvent['type'],
-    { Icon: typeof UserPlus; wrap: string; color: string }
-  > = {
-    'user.signup': { Icon: UserPlus, wrap: 'bg-green-100', color: 'text-green-700' },
-    'user.upgrade': {
-      Icon: TrendingUp,
-      wrap: 'bg-brand/10',
-      color: 'text-brand',
-    },
-    'user.suspend': { Icon: UserX, wrap: 'bg-red-100', color: 'text-red-700' },
-    'project.created': {
-      Icon: FolderPlus,
-      wrap: 'bg-blue-100',
-      color: 'text-blue-700',
-    },
-    'project.launched': {
-      Icon: Rocket,
-      wrap: 'bg-purple-100',
-      color: 'text-purple-700',
-    },
-    'payment.received': {
-      Icon: DollarSign,
-      wrap: 'bg-green-100',
-      color: 'text-green-700',
-    },
-    'payment.failed': {
-      Icon: AlertCircle,
-      wrap: 'bg-red-100',
-      color: 'text-red-700',
-    },
-    'agent.run': { Icon: Cpu, wrap: 'bg-brand/10', color: 'text-brand' },
-    'admin.action': {
-      Icon: Shield,
-      wrap: 'bg-amber-100',
-      color: 'text-amber-800',
-    },
+  const map: Record<ActivityEvent['type'], typeof UserPlus> = {
+    'user.signup': UserPlus,
+    'user.upgrade': TrendingUp,
+    'user.suspend': UserX,
+    'project.created': FolderPlus,
+    'project.launched': Rocket,
+    'payment.received': DollarSign,
+    'payment.failed': AlertCircle,
+    'agent.run': Cpu,
+    'admin.action': Shield,
   }
-  const { Icon, wrap, color } = map[type]
+  const Icon = map[type]
   return (
-    <div
-      className={cn(
-        'w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0',
-        wrap,
-      )}
-    >
-      <Icon className={cn('w-4 h-4', color)} />
+    <div className="w-8 h-8 rounded-full border border-divider flex items-center justify-center flex-shrink-0">
+      <Icon className="w-4 h-4 text-muted" />
     </div>
   )
 }

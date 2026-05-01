@@ -83,14 +83,14 @@ function StatusBadge({ row }: { row: IntegrationKey }) {
   if (row.validationStatus === 'valid') {
     return (
       <span className="rounded-chip bg-green-50 px-2 py-0.5 text-[11px] font-medium text-success">
-        Valid ✓
+        Valid
       </span>
     )
   }
   if (row.validationStatus === 'invalid') {
     return (
       <span className="rounded-chip bg-red-50 px-2 py-0.5 text-[11px] font-medium text-error">
-        Invalid ✗
+        Invalid
       </span>
     )
   }
@@ -148,7 +148,7 @@ export function IntegrationsSettings({
         />
       ))}
       <div className="bg-amber-50 border border-amber-200 rounded-card p-3 text-sm text-amber-950">
-        ⚠️ API keys are stored encrypted at rest using AES-256. They are never
+        API keys are stored encrypted at rest using AES-256. They are never
         logged, shown in full, or transmitted in plain text after saving.
       </div>
     </div>
@@ -256,7 +256,6 @@ function IntegrationRow({
               inline.ok ? 'text-success' : 'text-error',
             )}
           >
-            {inline.ok ? '✓ ' : '✗ '}
             {inline.text}
           </p>
         ) : null}

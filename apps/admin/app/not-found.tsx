@@ -1,3 +1,4 @@
+import { Cog } from 'lucide-react'
 import Link from 'next/link'
 
 export default function NotFound() {
@@ -6,7 +7,7 @@ export default function NotFound() {
       className="min-h-screen flex flex-col items-center justify-center"
       style={{ backgroundColor: '#5C4425' }}
     >
-      <p className="text-8xl mb-6">⚙️</p>
+      <Cog className="w-20 h-20 text-brand-light mb-6" />
       <h1 className="font-display text-4xl text-white mb-3">404</h1>
       <p className="text-brand-light mb-8">This admin page does not exist.</p>
       <Link

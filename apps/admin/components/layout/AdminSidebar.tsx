@@ -13,6 +13,7 @@ import {
   FileText,
   LogOut,
   ChevronRight,
+  Cog,
 } from 'lucide-react'
 import { cn } from '@/lib/cn'
 import { useAdminAuthStore } from '@/store/adminAuthStore'
@@ -58,7 +59,7 @@ export function AdminSidebar() {
       className="w-60 flex-shrink-0 flex flex-col border-r border-divider bg-sidebar min-h-screen sticky top-0"
     >
       <div className="h-16 flex items-center gap-3 px-5 border-b border-divider">
-        <span className="text-xl">⚙️</span>
+        <Cog className="w-5 h-5 text-muted" />
         <span className="font-display text-sm font-bold text-heading truncate">
           AI Startup Builder
         </span>

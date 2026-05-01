@@ -246,7 +246,7 @@ export function GeneralSettings({
 
       {maintenanceMode ? (
         <div className="bg-amber-50 border border-amber-200 rounded-card p-3 text-sm text-amber-900">
-          <p className="font-medium">⚠️ Maintenance mode is active</p>
+          <p className="font-medium">Maintenance mode is active</p>
           <p className="mt-1 text-[13px]">
             All /project/* routes show a maintenance page. /admin is still
             accessible.
