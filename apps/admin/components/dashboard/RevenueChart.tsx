@@ -52,7 +52,7 @@ export function RevenueChart({ data, isLoading }: RevenueChartProps) {
           </defs>
           <CartesianGrid
             strokeDasharray="3 3"
-            stroke="#E8DFD0"
+            stroke="#D0C8C0"
             vertical={false}
           />
           <XAxis
@@ -71,7 +71,7 @@ export function RevenueChart({ data, isLoading }: RevenueChartProps) {
           <Tooltip
             contentStyle={{
               background: '#FFFFFF',
-              border: '1px solid #E8DFD0',
+              border: '1px solid #D0C8C0',
               borderRadius: '8px',
               fontSize: '12px',
             }}

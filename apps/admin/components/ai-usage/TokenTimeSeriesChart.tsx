@@ -33,7 +33,7 @@ export function TokenTimeSeriesChart({
       </h3>
       <ResponsiveContainer width="100%" height={280}>
         <ComposedChart data={data} margin={{ top: 8, right: 16, bottom: 8, left: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#E8DFD0" vertical={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#D0C8C0" vertical={false} />
           <XAxis dataKey="date" tick={{ fontSize: 10, fill: '#C4A882' }} />
           <YAxis
             yAxisId="left"
@@ -51,7 +51,7 @@ export function TokenTimeSeriesChart({
           <Tooltip
             contentStyle={{
               background: '#fff',
-              border: '1px solid #E8DFD0',
+              border: '1px solid #D0C8C0',
               borderRadius: 8,
               fontSize: 12,
             }}

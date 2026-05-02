@@ -42,7 +42,7 @@ export function AgentBreakdownChart({
           data={data}
           margin={{ top: 8, right: 16, bottom: 8, left: 8 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="#E8DFD0" horizontal />
+          <CartesianGrid strokeDasharray="3 3" stroke="#D0C8C0" horizontal />
           <XAxis
             type="number"
             tickFormatter={(n: number) =>
@@ -59,7 +59,7 @@ export function AgentBreakdownChart({
           />
           <Tooltip
             contentStyle={{
-              border: '1px solid #E8DFD0',
+              border: '1px solid #D0C8C0',
               borderRadius: 8,
               fontSize: 12,
             }}

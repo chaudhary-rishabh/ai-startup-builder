@@ -11,7 +11,7 @@ import {
 import type { AIModelBreakdown } from '@/types'
 import { formatNumber } from '@/lib/dateRange'
 
-const COLORS = ['#8B6F47', '#D97706', '#C4A882', '#5C4425', '#E8DFD0']
+const COLORS = ['#8B6F47', '#D97706', '#C4A882', '#5C4425', '#D0C8C0']
 
 interface ModelBreakdownProps {
   data: AIModelBreakdown[]

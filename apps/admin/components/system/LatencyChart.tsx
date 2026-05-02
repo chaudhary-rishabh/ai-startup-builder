@@ -32,7 +32,7 @@ export function LatencyChart({ data, isLoading }: LatencyChartProps) {
         <ComposedChart data={data} margin={{ top: 8, right: 8, bottom: 8, left: 0 }}>
           <CartesianGrid
             strokeDasharray="3 3"
-            stroke="#E8DFD0"
+            stroke="#D0C8C0"
             vertical={false}
           />
           <XAxis
@@ -46,7 +46,7 @@ export function LatencyChart({ data, isLoading }: LatencyChartProps) {
           />
           <Tooltip
             contentStyle={{
-              border: '1px solid #E8DFD0',
+              border: '1px solid #D0C8C0',
               borderRadius: 8,
               fontSize: 12,
             }}

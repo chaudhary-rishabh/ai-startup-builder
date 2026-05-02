@@ -137,7 +137,7 @@ export function AdminLoginContent() {
         className="fixed inset-0 pointer-events-none"
         style={{
           backgroundImage:
-            'radial-gradient(circle, #EDE5D8 1px, transparent 1px)',
+            'radial-gradient(circle, #E0DAD3 1px, transparent 1px)',
           backgroundSize: '32px 32px',
           opacity: 0.05,
         }}

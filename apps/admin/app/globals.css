@@ -6,11 +6,11 @@
   --brand: #8b6f47;
   --brand-dark: #5c4425;
   --brand-light: #c4a882;
-  --bg: #f5f0e8;
-  --sidebar: #ede5d8;
-  --divider: #e8dfd0;
+  --bg: #f2edeb;
+  --sidebar: #f2edeb;
+  --divider: #e0dad3;
   --card: #ffffff;
-  --output: #faf8f5;
+  --output: #f8f6f4;
   --muted: #c4a882;
   --heading: #5c4425;
   --error: #dc2626;
@@ -34,9 +34,9 @@ body {
 .shimmer {
   background: linear-gradient(
     90deg,
-    #ede5d8 25%,
-    #f5f0e8 50%,
-    #ede5d8 75%
+    #e0dad3 25%,
+    #ffffff 50%,
+    #e0dad3 75%
   );
   background-size: 200% 100%;
   animation: shimmer 1.4s infinite;
