@@ -18,6 +18,8 @@ packages/
 
 Backend microservices sit behind an API gateway (`:4000`). Auth (`:4001`), Users (`:4002`), Projects (`:4003`), AI (`:4004`), RAG (`:4005`), Billing (`:4006`), Notifications (`:4007`).
 
+> **Note:** All 7 microservices must be running before the web/admin apps are functional. `pnpm dev` at the root starts everything via Turborepo — individual services can also be started from their respective directories.
+
 ## Stack
 
 | Layer | Technology |
@@ -54,7 +56,8 @@ docker compose up -d
 # 3. Configure environment
 cp .env.example .env.local
 # Fill in required values (AI keys, OAuth credentials, etc.)
-# Generate JWT keys: pnpm generate-keys
+# Generate RS256 JWT keypair: pnpm generate-keys
+# This writes JWT_PRIVATE_KEY and JWT_PUBLIC_KEY into .env.local
 
 # 4. Run migrations and seed
 pnpm db:migrate
@@ -62,8 +65,10 @@ pnpm seed
 
 # 5. Start development
 pnpm dev
-# Web app → http://localhost:3000
-# Admin   → http://localhost:3001
+# Web app   → http://localhost:3000
+# Admin     → http://localhost:3001
+# Gateway   → http://localhost:4000
+# Requires: Docker services (step 2) + .env.local (step 3) must be complete first
 ```
 
 ## Commands
@@ -90,9 +95,22 @@ pnpm dev
 5. **Deploy** — E2e testing, CI/CD pipeline, deployment to production
 6. **Growth** — AI-generated growth actions, feedback analysis, playbook
 
+
 ## Environment Variables
 
-All configuration lives in `.env.local` (never committed). See `.env.example` for the complete reference — covers AI provider keys, database URLs, OAuth credentials, billing keys, AWS config, and service-level settings.
+Copy `.env.example` to `.env.local`. The following are required to start:
+
+| Variable | Description |
+|---|---|
+| `DATABASE_URL` | PostgreSQL connection string |
+| `REDIS_URL` | Redis connection string |
+| `JWT_PRIVATE_KEY` / `JWT_PUBLIC_KEY` | RS256 keypair (run `pnpm generate-keys`) |
+| `DEEPSEEK_API_KEY` | Primary AI model |
+| `PINECONE_API_KEY` + `PINECONE_INDEX` | RAG layer |
+| `RAZORPAY_KEY_ID` + `RAZORPAY_KEY_SECRET` | Billing |
+| `RESEND_API_KEY` | Transactional email |
+
+All other variables are optional or have defaults. See `.env.example` for the full reference.
 
 ## CI / CD
 
