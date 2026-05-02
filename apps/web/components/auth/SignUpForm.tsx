@@ -235,7 +235,7 @@ export function SignUpForm(): JSX.Element {
                         : passwordStrength === 2
                           ? '#D97706'
                           : '#16A34A'
-                      : '#E8DFD0',
+                      : '#E0DAD3',
                 }}
               />
             ))}

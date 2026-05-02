@@ -3,40 +3,9 @@
 import { useMemo, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import * as Select from '@radix-ui/react-select'
-import {
-  BookOpen,
-  Building2,
-  Check,
-  ChevronDown,
-  DollarSign,
-  Gamepad2,
-  Lightbulb,
-  Music,
-  Plane,
-  Rocket,
-  ShoppingCart,
-  Sprout,
-  Dumbbell,
-  Wrench,
-} from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
+import { Check, ChevronDown } from 'lucide-react'
 
 import api from '@/lib/axios'
-
-const projectIconOptions: { emoji: string; icon: LucideIcon }[] = [
-  { emoji: '🚀', icon: Rocket },
-  { emoji: '💡', icon: Lightbulb },
-  { emoji: '🛒', icon: ShoppingCart },
-  { emoji: '🏥', icon: Building2 },
-  { emoji: '📚', icon: BookOpen },
-  { emoji: '🎵', icon: Music },
-  { emoji: '🏋️', icon: Dumbbell },
-  { emoji: '🌱', icon: Sprout },
-  { emoji: '🔧', icon: Wrench },
-  { emoji: '💰', icon: DollarSign },
-  { emoji: '🎮', icon: Gamepad2 },
-  { emoji: '✈️', icon: Plane },
-]
 
 interface IdeaDraft {
   projectName: string
@@ -207,21 +176,6 @@ export function OnboardingWizard(): JSX.Element {
               className="h-[120px] w-full rounded-md border border-divider bg-card px-3 py-2 text-sm"
               placeholder="Describe your startup idea in 2-3 sentences..."
             />
-            <div className="flex flex-wrap gap-2">
-              {projectIconOptions.map(({ emoji, icon: Icon }) => (
-                <button
-                  key={emoji}
-                  type="button"
-                  onClick={() => setIdeaDraft((prev) => ({ ...prev, emoji }))}
-                  className={`h-9 w-9 rounded-full border p-1.5 transition ${
-                    ideaDraft.emoji === emoji ? 'scale-110 border-brand bg-divider' : 'border-divider bg-card hover:border-muted'
-                  }`}
-                  title={emoji}
-                >
-                  <Icon className="w-4 h-4 text-muted" />
-                </button>
-              ))}
-            </div>
             <button
               type="button"
               onClick={continueIdea}
