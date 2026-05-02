@@ -19,11 +19,11 @@
 }
 
 :root {
-  --color-bg: #f5f0e8;
-  --color-sidebar: #ede5d8;
+  --color-bg: #f2edeb;
+  --color-sidebar: #f2edeb;
   --color-card: #ffffff;
-  --color-output: #faf8f5;
-  --color-divider: #e8dfd0;
+  --color-output: #f8f6f4;
+  --color-divider: #e0dad3;
   --color-brand: #8b6f47;
   --color-heading: #5c4425;
   --color-muted: #c4a882;
@@ -42,7 +42,7 @@
   }
 
   body {
-    background-color: #f5f0e8;
+    background-color: #f2edeb;
     color: #5c4425;
     -webkit-font-smoothing: antialiased;
   }
@@ -76,7 +76,7 @@
   }
 
   .shimmer {
-    background: linear-gradient(90deg, #ede5d8 25%, #f5f0e8 50%, #ede5d8 75%);
+    background: linear-gradient(90deg, #e0dad3 25%, #ffffff 50%, #e0dad3 75%);
     background-size: 200% 100%;
     animation: shimmer 1.5s ease-in-out infinite;
   }

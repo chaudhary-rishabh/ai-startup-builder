@@ -82,7 +82,7 @@ export default function DesignPage({ params }: { params: Promise<{ id: string }>
   return (
     <div className="relative flex h-full flex-col bg-bg">
       {isModeTransitioning ? (
-        <div className="absolute inset-0 z-50 flex items-center justify-center bg-[#F5F0E8]/95 text-sm font-semibold text-heading">
+        <div className="absolute inset-0 z-50 flex items-center justify-center bg-bg/95 text-sm font-semibold text-heading">
           Entering Design Mode…
         </div>
       ) : null}
