@@ -3,10 +3,40 @@
 import { useMemo, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import * as Select from '@radix-ui/react-select'
+import {
+  BookOpen,
+  Building2,
+  Check,
+  ChevronDown,
+  DollarSign,
+  Gamepad2,
+  Lightbulb,
+  Music,
+  Plane,
+  Rocket,
+  ShoppingCart,
+  Sprout,
+  Dumbbell,
+  Wrench,
+} from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 
 import api from '@/lib/axios'
 
-const emojis = ['🚀', '💡', '🛒', '🏥', '📚', '🎵', '🏋️', '🌱', '🔧', '💰', '🎮', '✈️']
+const projectIconOptions: { emoji: string; icon: LucideIcon }[] = [
+  { emoji: '🚀', icon: Rocket },
+  { emoji: '💡', icon: Lightbulb },
+  { emoji: '🛒', icon: ShoppingCart },
+  { emoji: '🏥', icon: Building2 },
+  { emoji: '📚', icon: BookOpen },
+  { emoji: '🎵', icon: Music },
+  { emoji: '🏋️', icon: Dumbbell },
+  { emoji: '🌱', icon: Sprout },
+  { emoji: '🔧', icon: Wrench },
+  { emoji: '💰', icon: DollarSign },
+  { emoji: '🎮', icon: Gamepad2 },
+  { emoji: '✈️', icon: Plane },
+]
 
 interface IdeaDraft {
   projectName: string
@@ -94,7 +124,7 @@ export function OnboardingWizard(): JSX.Element {
                             : 'border border-divider bg-bg text-muted'
                       }`}
                     >
-                      {complete ? '✓' : indexStep}
+                      {complete ? <Check className="w-3.5 h-3.5" /> : indexStep}
                     </span>
                     {index < stepLabels.length - 1 ? (
                       <span className={`h-0.5 flex-1 ${indexStep < step ? 'bg-brand' : 'bg-divider'}`} />
@@ -123,7 +153,7 @@ export function OnboardingWizard(): JSX.Element {
             <Select.Root value={role} onValueChange={(value) => setRole(value as typeof role)}>
               <Select.Trigger className="flex h-11 w-full items-center justify-between rounded-md border border-divider bg-card px-3 text-sm">
                 <Select.Value />
-                <Select.Icon>▾</Select.Icon>
+                <Select.Icon><ChevronDown className="w-4 h-4 text-muted" /></Select.Icon>
               </Select.Trigger>
               <Select.Portal>
                 <Select.Content className="z-50 rounded-md border border-divider bg-card p-1 shadow-md">
@@ -178,16 +208,17 @@ export function OnboardingWizard(): JSX.Element {
               placeholder="Describe your startup idea in 2-3 sentences..."
             />
             <div className="flex flex-wrap gap-2">
-              {emojis.map((emoji) => (
+              {projectIconOptions.map(({ emoji, icon: Icon }) => (
                 <button
                   key={emoji}
                   type="button"
                   onClick={() => setIdeaDraft((prev) => ({ ...prev, emoji }))}
-                  className={`h-9 w-9 rounded-full border text-lg transition ${
-                    ideaDraft.emoji === emoji ? 'scale-110 border-brand bg-sidebar' : 'border-divider bg-card'
+                  className={`h-9 w-9 rounded-full border p-1.5 transition ${
+                    ideaDraft.emoji === emoji ? 'scale-110 border-brand bg-divider' : 'border-divider bg-card hover:border-muted'
                   }`}
+                  title={emoji}
                 >
-                  {emoji}
+                  <Icon className="w-4 h-4 text-muted" />
                 </button>
               ))}
             </div>

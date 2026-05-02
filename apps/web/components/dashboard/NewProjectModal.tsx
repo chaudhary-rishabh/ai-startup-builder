@@ -2,7 +2,23 @@
 
 import { useEffect } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { X } from 'lucide-react'
+import {
+  BookOpen,
+  Building2,
+  DollarSign,
+  Gamepad2,
+  HardDrive,
+  Lightbulb,
+  Music,
+  Plane,
+  Rocket,
+  ShoppingCart,
+  Sprout,
+  Dumbbell,
+  Wrench,
+  X,
+} from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -22,7 +38,20 @@ const projectSchema = z.object({
 
 type ProjectFormValues = z.infer<typeof projectSchema>
 
-const emojiOptions = ['🚀', '💡', '🛒', '🏥', '📚', '🎵', '🏋️', '🌱', '🔧', '💰', '🎮', '✈️']
+const projectIconOptions: { emoji: string; icon: LucideIcon }[] = [
+  { emoji: '🚀', icon: Rocket },
+  { emoji: '💡', icon: Lightbulb },
+  { emoji: '🛒', icon: ShoppingCart },
+  { emoji: '🏥', icon: Building2 },
+  { emoji: '📚', icon: BookOpen },
+  { emoji: '🎵', icon: Music },
+  { emoji: '🏋️', icon: Dumbbell },
+  { emoji: '🌱', icon: Sprout },
+  { emoji: '🔧', icon: Wrench },
+  { emoji: '💰', icon: DollarSign },
+  { emoji: '🎮', icon: Gamepad2 },
+  { emoji: '✈️', icon: Plane },
+]
 
 interface NewProjectModalProps {
   open: boolean
@@ -78,7 +107,7 @@ export function NewProjectModal({ open, onClose }: NewProjectModalProps): JSX.El
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 p-4 sm:items-center">
-      <div className="w-full max-w-[480px] rounded-panel bg-card p-8 shadow-lg">
+      <div className="w-[calc(100%-2rem)] max-w-[50vw] min-w-[360px] rounded-panel bg-card p-8 shadow-lg sm:w-[50vw]">
         <div className="mb-5 flex items-center justify-between">
           <h2 className="font-display text-[20px] font-bold text-heading">Create New Project</h2>
           <button type="button" onClick={onClose} aria-label="Close modal" className="rounded p-1 hover:bg-output">
@@ -88,16 +117,17 @@ export function NewProjectModal({ open, onClose }: NewProjectModalProps): JSX.El
 
         <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
           <div className="flex flex-wrap gap-2">
-            {emojiOptions.map((emoji) => (
+            {projectIconOptions.map(({ emoji, icon: Icon }) => (
               <button
                 key={emoji}
                 type="button"
                 onClick={() => setValue('emoji', emoji)}
-                className={`rounded-full border px-2 py-1 text-xl transition ${
-                  selectedEmoji === emoji ? 'scale-110 border-brand bg-divider' : 'border-divider bg-card'
+                className={`rounded-full border p-2 transition ${
+                  selectedEmoji === emoji ? 'scale-110 border-brand bg-divider' : 'border-divider bg-card hover:border-muted'
                 }`}
+                title={emoji}
               >
-                {emoji}
+                <Icon className="w-5 h-5 text-muted" />
               </button>
             ))}
           </div>
@@ -123,7 +153,7 @@ export function NewProjectModal({ open, onClose }: NewProjectModalProps): JSX.El
 
           {data?.projects?.length ? (
             <div className="rounded-chip bg-divider px-3 py-1.5 text-xs text-heading">
-              💾 Based on your previous projects: PostgreSQL · TypeScript · Production-ready
+              <HardDrive className="w-3.5 h-3.5 inline text-muted" /> Based on your previous projects: PostgreSQL · TypeScript · Production-ready
             </div>
           ) : null}
 

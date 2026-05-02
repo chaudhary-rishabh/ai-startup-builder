@@ -109,8 +109,8 @@ export function createRateLimiter(options: RateLimiterOptions): MiddlewareHandle
 
 // ── Pre-built rate limiters for route groups ─────────────────────────────────
 /** Stricter cap for unauthenticated auth flows (login, OAuth, password reset, etc.) */
-export const authRateLimiter = createRateLimiter({ max: 16, window: 60 })
-export const refreshRateLimiter = createRateLimiter({ max: 22, window: 60 })
-export const generalRateLimiter = createRateLimiter({ max: 60, window: 60 })
-export const aiRateLimiter = createRateLimiter({ max: 12, window: 60 })
-export const adminRateLimiter = createRateLimiter({ max: 120, window: 60 })
+export const authRateLimiter = createRateLimiter({ max: 160, window: 60 })
+export const refreshRateLimiter = createRateLimiter({ max: 220, window: 60 })
+export const generalRateLimiter = createRateLimiter({ max: 600, window: 60 })
+export const aiRateLimiter = createRateLimiter({ max: 120, window: 60 })
+export const adminRateLimiter = createRateLimiter({ max: 1200, window: 60 })
