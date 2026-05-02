@@ -1,7 +1,7 @@
 'use client'
 
 import { formatDistanceToNow } from 'date-fns'
-import { Hand, Handshake, MoreHorizontal, Star, Zap } from 'lucide-react'
+import { MoreHorizontal, Star } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
@@ -27,20 +27,6 @@ const phaseLabels: Record<number, string> = {
   6: 'Growth',
 }
 
-import type { LucideIcon } from 'lucide-react'
-
-const buildModeIcon: Record<Project['buildMode'], LucideIcon> = {
-  autopilot: Zap,
-  copilot: Handshake,
-  manual: Hand,
-}
-
-const buildModeLabel: Record<Project['buildMode'], string> = {
-  autopilot: 'Autopilot',
-  copilot: 'Copilot',
-  manual: 'Manual',
-}
-
 export function ProjectCard({ project }: { project: Project }): JSX.Element {
   const router = useRouter()
   const [menuOpen, setMenuOpen] = useState(false)
@@ -53,10 +39,7 @@ export function ProjectCard({ project }: { project: Project }): JSX.Element {
       {project.isStarred ? <Star className="absolute right-3 top-3 h-4 w-4 text-muted" /> : null}
 
       <div className="flex items-center justify-between border-b border-divider px-4 py-4">
-        <div className="flex min-w-0 items-center gap-2">
-          <span className="text-xl">{project.emoji}</span>
-          <h3 className="truncate text-sm font-medium text-heading">{project.name}</h3>
-        </div>
+        <h3 className="min-w-0 truncate text-sm font-medium text-heading">{project.name}</h3>
         <div className="flex items-center gap-2">
           <span className={`rounded-chip px-2 py-1 text-[10px] font-semibold ${phaseStyles[project.currentPhase]}`}>
             {phaseLabels[project.currentPhase]}
@@ -100,13 +83,6 @@ export function ProjectCard({ project }: { project: Project }): JSX.Element {
         >
           Continue →
         </button>
-      </div>
-
-      <div className="px-4 pb-3">
-        <span className="rounded-full bg-output px-2 py-0.5 text-[10px] text-heading inline-flex items-center gap-1">
-          {(() => { const Icon = buildModeIcon[project.buildMode]; return <Icon className="w-3 h-3" />; })()}
-          {buildModeLabel[project.buildMode]}
-        </span>
       </div>
 
       {menuOpen ? (

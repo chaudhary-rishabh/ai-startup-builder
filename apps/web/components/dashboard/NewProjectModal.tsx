@@ -2,23 +2,7 @@
 
 import { useEffect } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
-import {
-  BookOpen,
-  Building2,
-  DollarSign,
-  Gamepad2,
-  HardDrive,
-  Lightbulb,
-  Music,
-  Plane,
-  Rocket,
-  ShoppingCart,
-  Sprout,
-  Dumbbell,
-  Wrench,
-  X,
-} from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
+import { HardDrive, X } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -37,21 +21,6 @@ const projectSchema = z.object({
 })
 
 type ProjectFormValues = z.infer<typeof projectSchema>
-
-const projectIconOptions: { emoji: string; icon: LucideIcon }[] = [
-  { emoji: '🚀', icon: Rocket },
-  { emoji: '💡', icon: Lightbulb },
-  { emoji: '🛒', icon: ShoppingCart },
-  { emoji: '🏥', icon: Building2 },
-  { emoji: '📚', icon: BookOpen },
-  { emoji: '🎵', icon: Music },
-  { emoji: '🏋️', icon: Dumbbell },
-  { emoji: '🌱', icon: Sprout },
-  { emoji: '🔧', icon: Wrench },
-  { emoji: '💰', icon: DollarSign },
-  { emoji: '🎮', icon: Gamepad2 },
-  { emoji: '✈️', icon: Plane },
-]
 
 interface NewProjectModalProps {
   open: boolean
@@ -91,7 +60,6 @@ export function NewProjectModal({ open, onClose }: NewProjectModalProps): JSX.El
 
   if (!open) return null
 
-  const selectedEmoji = watch('emoji')
   const selectedBuildMode = watch('buildMode')
 
   const onSubmit = async (values: ProjectFormValues): Promise<void> => {
@@ -116,22 +84,6 @@ export function NewProjectModal({ open, onClose }: NewProjectModalProps): JSX.El
         </div>
 
         <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex flex-wrap gap-2">
-            {projectIconOptions.map(({ emoji, icon: Icon }) => (
-              <button
-                key={emoji}
-                type="button"
-                onClick={() => setValue('emoji', emoji)}
-                className={`rounded-full border p-2 transition ${
-                  selectedEmoji === emoji ? 'scale-110 border-brand bg-divider' : 'border-divider bg-card hover:border-muted'
-                }`}
-                title={emoji}
-              >
-                <Icon className="w-5 h-5 text-muted" />
-              </button>
-            ))}
-          </div>
-
           <div>
             <input
               {...register('name')}

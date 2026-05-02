@@ -58,29 +58,30 @@ function SidebarContent({ collapsed, onNavigate, onToggleCollapse }: { collapsed
   return (
     <>
       <aside
-        className={`flex h-screen flex-col border-r border-divider bg-bg ${collapsed ? 'w-12 px-2 py-3' : 'w-[var(--sidebar-width,240px)] p-3'}`}
+        style={{ width: collapsed ? 48 : 'var(--sidebar-width, 240px)' }}
+        className="flex h-screen flex-col border-r border-divider bg-bg transition-[width] duration-300 ease-out overflow-hidden flex-shrink-0"
       >
-        <div className="mb-3 flex items-center justify-between">
-          <ModeToggle compact={collapsed} />
+        <div className={`flex items-center ${collapsed ? 'px-2 py-3 flex-col gap-2' : 'p-3 justify-between'}`}>
+          {!collapsed ? <ModeToggle compact={false} /> : null}
           {onToggleCollapse ? (
             <button
               type="button"
               onClick={onToggleCollapse}
-              className="rounded-md p-1 hover:bg-divider text-muted"
+              className={collapsed ? 'flex h-9 w-9 items-center justify-center rounded-md hover:bg-divider text-muted' : 'rounded-md p-1 hover:bg-divider text-muted'}
               aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
             >
-              {collapsed ? <PanelLeftOpen size={14} /> : <PanelLeftClose size={14} />}
+              {collapsed ? <PanelLeftOpen size={16} /> : <PanelLeftClose size={14} />}
             </button>
           ) : null}
         </div>
         {!collapsed ? (
-          <div className="mb-4 flex items-center gap-2 text-heading">
-            <Rocket className="w-5 h-5 text-muted" />
-            <span className="font-display text-[15px] font-bold">AI Startup Builder</span>
+          <div className="mb-4 flex items-center gap-2 text-heading px-3">
+            <Rocket className="w-5 h-5 text-muted flex-shrink-0" />
+            <span className="font-display text-[15px] font-bold whitespace-nowrap">AI Startup Builder</span>
           </div>
         ) : null}
 
-        <div className="mb-3">
+        <div className={`mb-3 ${collapsed ? 'px-2' : 'px-3'}`}>
           {!collapsed ? (
             <div className="relative">
               <Search className="pointer-events-none absolute left-2 top-2.5 h-4 w-4 text-muted" />
@@ -99,16 +100,18 @@ function SidebarContent({ collapsed, onNavigate, onToggleCollapse }: { collapsed
           )}
         </div>
 
-        <button
-          type="button"
-          onClick={() => setNewProjectOpen(true)}
-          className={`mb-4 rounded-md bg-brand text-sm font-semibold text-white hover:brightness-90 ${collapsed ? 'h-9 w-full' : 'h-10 w-full'}`}
-        >
-          {collapsed ? '+' : '+ New Project'}
-        </button>
+        <div className={`mb-4 ${collapsed ? 'px-2' : 'px-3'}`}>
+          <button
+            type="button"
+            onClick={() => setNewProjectOpen(true)}
+            className={`rounded-md bg-brand text-sm font-semibold text-white hover:brightness-90 ${collapsed ? 'h-9 w-full' : 'h-10 w-full'}`}
+          >
+            {collapsed ? '+' : '+ New Project'}
+          </button>
+        </div>
 
-        <p className="mb-2 text-[10px] uppercase tracking-[0.08em] text-muted">{collapsed ? 'P' : 'PROJECTS'}</p>
-        <div className="space-y-1">
+        <p className={`mb-2 text-[10px] uppercase tracking-[0.08em] text-muted ${collapsed ? 'px-2' : 'px-3'}`}>{collapsed ? 'P' : 'PROJECTS'}</p>
+        <div className={`space-y-1 ${collapsed ? 'px-2' : 'px-3'}`}>
           {filteredProjects.map((project) => {
             const active = pathname?.includes(`/project/${project.id}`) ?? false
             return (
@@ -132,7 +135,7 @@ function SidebarContent({ collapsed, onNavigate, onToggleCollapse }: { collapsed
 
         <button
           type="button"
-          className="mt-4 flex items-center justify-between text-[10px] uppercase tracking-[0.08em] text-muted"
+          className={`mt-4 flex items-center justify-between text-[10px] uppercase tracking-[0.08em] text-muted ${collapsed ? 'px-2' : 'px-3'}`}
           onClick={() => setStarredOpen((current) => !current)}
         >
           <span>{collapsed ? <Star className="w-3 h-3" /> : 'STARRED'}</span>
@@ -146,7 +149,7 @@ function SidebarContent({ collapsed, onNavigate, onToggleCollapse }: { collapsed
               exit={{ height: 0, opacity: 0 }}
               className="overflow-hidden"
             >
-              <div className="mt-1 space-y-1">
+              <div className={`mt-1 space-y-1 ${collapsed ? 'px-2' : 'px-3'}`}>
                 {(starredQuery.data?.projects ?? []).map((project) => (
                   <button
                     key={project.id}
@@ -166,18 +169,18 @@ function SidebarContent({ collapsed, onNavigate, onToggleCollapse }: { collapsed
           ) : null}
         </AnimatePresence>
 
-        <p className="mt-4 text-[10px] uppercase tracking-[0.08em] text-muted">{collapsed ? 'R' : 'RAG AI'}</p>
+        <p className={`mt-4 text-[10px] uppercase tracking-[0.08em] text-muted ${collapsed ? 'px-2' : 'px-3'}`}>{collapsed ? 'R' : 'RAG AI'}</p>
         <button
           type="button"
-          className="mt-1 flex h-9 w-full items-center gap-2 rounded-md px-2 hover:bg-divider"
+          className={`mt-1 flex h-9 w-full items-center gap-2 rounded-md px-2 hover:bg-divider ${collapsed ? 'justify-center' : ''}`}
           onClick={() => setRagModalOpen(true)}
         >
-          <Brain className="h-4 w-4" />
+          <Brain className="h-4 w-4 flex-shrink-0" />
           {!collapsed ? <span className="flex-1 text-left text-[13px]">My AI Brain</span> : null}
           <RagDot status={ragStatus} />
         </button>
 
-        <div className="mt-auto flex items-center justify-between">
+        <div className={`mt-auto flex items-center ${collapsed ? 'px-2 justify-center' : 'px-3 justify-between'}`}>
           <Link href="/settings" className="rounded-md p-2 hover:bg-divider" aria-label="Settings">
             <Settings size={16} />
           </Link>

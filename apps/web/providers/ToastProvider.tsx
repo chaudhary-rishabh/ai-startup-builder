@@ -37,8 +37,8 @@ export function ToastProvider({ children }: PropsWithChildren): JSX.Element {
         toastOptions={{
           style: {
             background: '#FFFFFF',
-            border: '1px solid #E8DFD0',
-            borderRadius: '12px',
+            border: '1px solid #E0DAD3',
+            borderRadius: '30px',
             color: '#5C4425',
           },
         }}
