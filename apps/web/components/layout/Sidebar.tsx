@@ -1,7 +1,7 @@
 'use client'
 
 import { AnimatePresence, motion } from 'framer-motion'
-import { Brain, ChevronDown, ChevronRight, Rocket, Search, Settings, Star } from 'lucide-react'
+import { Brain, ChevronDown, ChevronRight, PanelLeftClose, PanelLeftOpen, Rocket, Search, Settings, Star } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useMemo, useState } from 'react'
@@ -18,6 +18,8 @@ import { useAuthStore } from '@/store/authStore'
 interface SidebarProps {
   mobileOpen: boolean
   onCloseMobile: () => void
+  desktopCollapsed?: boolean
+  onToggleDesktop?: () => void
 }
 
 function RagDot({ status }: { status: 'active' | 'pending' | 'empty' }): JSX.Element {
@@ -28,7 +30,7 @@ function RagDot({ status }: { status: 'active' | 'pending' | 'empty' }): JSX.Ele
   )
 }
 
-function SidebarContent({ collapsed, onNavigate }: { collapsed: boolean; onNavigate: () => void }): JSX.Element {
+function SidebarContent({ collapsed, onNavigate, onToggleCollapse }: { collapsed: boolean; onNavigate: () => void; onToggleCollapse?: () => void }): JSX.Element {
   const router = useRouter()
   const pathname = usePathname()
   const { data } = useProjects({ status: 'active' })
@@ -56,13 +58,27 @@ function SidebarContent({ collapsed, onNavigate }: { collapsed: boolean; onNavig
   return (
     <>
       <aside
-        className={`flex h-screen flex-col border-r border-divider bg-sidebar shadow-lg ${collapsed ? 'w-12 px-2 py-3' : 'w-[var(--sidebar-width,240px)] p-3'}`}
+        className={`flex h-screen flex-col border-r border-divider bg-bg ${collapsed ? 'w-12 px-2 py-3' : 'w-[var(--sidebar-width,240px)] p-3'}`}
       >
-        <div className="mb-3">{<ModeToggle compact={collapsed} />}</div>
-        <div className="mb-4 flex items-center gap-2 text-heading">
-          <Rocket className="w-5 h-5 text-muted" />
-          {!collapsed ? <span className="font-display text-[15px] font-bold">AI Startup Builder</span> : null}
+        <div className="mb-3 flex items-center justify-between">
+          <ModeToggle compact={collapsed} />
+          {onToggleCollapse ? (
+            <button
+              type="button"
+              onClick={onToggleCollapse}
+              className="rounded-md p-1 hover:bg-divider text-muted"
+              aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+            >
+              {collapsed ? <PanelLeftOpen size={14} /> : <PanelLeftClose size={14} />}
+            </button>
+          ) : null}
         </div>
+        {!collapsed ? (
+          <div className="mb-4 flex items-center gap-2 text-heading">
+            <Rocket className="w-5 h-5 text-muted" />
+            <span className="font-display text-[15px] font-bold">AI Startup Builder</span>
+          </div>
+        ) : null}
 
         <div className="mb-3">
           {!collapsed ? (
@@ -107,7 +123,6 @@ function SidebarContent({ collapsed, onNavigate }: { collapsed: boolean; onNavig
                   onNavigate()
                 }}
               >
-                <span>{project.emoji}</span>
                 {!collapsed ? <span className="min-w-0 flex-1 truncate text-[13px] text-heading">{project.name}</span> : null}
                 {!collapsed ? <span className="text-[10px] text-muted">P{project.currentPhase}</span> : null}
               </button>
@@ -142,7 +157,6 @@ function SidebarContent({ collapsed, onNavigate }: { collapsed: boolean; onNavig
                       onNavigate()
                     }}
                   >
-                    <span>{project.emoji}</span>
                     {!collapsed ? <span className="min-w-0 flex-1 truncate text-[13px]">{project.name}</span> : null}
                     <Star className="h-3 w-3 text-muted" />
                   </button>
@@ -191,11 +205,11 @@ function SidebarContent({ collapsed, onNavigate }: { collapsed: boolean; onNavig
   )
 }
 
-export function Sidebar({ mobileOpen, onCloseMobile }: SidebarProps): JSX.Element {
+export function Sidebar({ mobileOpen, onCloseMobile, desktopCollapsed = false, onToggleDesktop }: SidebarProps): JSX.Element {
   return (
     <>
       <div className="hidden lg:block">
-        <SidebarContent collapsed={false} onNavigate={() => undefined} />
+        <SidebarContent collapsed={desktopCollapsed} onNavigate={() => undefined} onToggleCollapse={onToggleDesktop} />
       </div>
       <div className="hidden md:block lg:hidden">
         <SidebarContent collapsed={true} onNavigate={() => undefined} />

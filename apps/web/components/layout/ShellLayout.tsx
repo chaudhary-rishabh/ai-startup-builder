@@ -12,6 +12,7 @@ export function ShellLayout({ children }: { children: React.ReactNode }): JSX.El
   const isDev = useProjectStore((state) => state.mode === 'dev')
   const isModeTransitioning = useProjectStore((state) => state.isModeTransitioning)
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false)
+  const [desktopSidebarCollapsed, setDesktopSidebarCollapsed] = useState(false)
 
   const mainClassName = useMemo(
     () =>
@@ -25,7 +26,12 @@ export function ShellLayout({ children }: { children: React.ReactNode }): JSX.El
 
   return (
     <div className="flex h-screen overflow-hidden bg-bg">
-      <Sidebar mobileOpen={mobileSidebarOpen} onCloseMobile={() => setMobileSidebarOpen(false)} />
+      <Sidebar
+        mobileOpen={mobileSidebarOpen}
+        onCloseMobile={() => setMobileSidebarOpen(false)}
+        desktopCollapsed={desktopSidebarCollapsed}
+        onToggleDesktop={() => setDesktopSidebarCollapsed((prev) => !prev)}
+      />
       <ResizeHandle />
       <main data-testid="main-content" className={mainClassName}>
         <button
