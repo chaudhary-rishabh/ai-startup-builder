@@ -27,7 +27,7 @@ export function FrameViewer({ iframeWidth, zoom }: FrameViewerProps): JSX.Elemen
   }, [selected])
 
   return (
-    <section className="relative flex flex-1 flex-col overflow-hidden bg-[#FAF8F5]" style={{ backgroundImage: 'radial-gradient(#E8DFD0 0.8px, transparent 0.8px)', backgroundSize: '16px 16px' }}>
+    <section className="relative flex flex-1 flex-col overflow-hidden bg-output" style={{ backgroundImage: 'radial-gradient(#E0DAD3 0.8px, transparent 0.8px)', backgroundSize: '16px 16px' }}>
       <div className="flex flex-1 items-center justify-center p-6">
         <AnimatePresence mode="wait">
           {selected ? (

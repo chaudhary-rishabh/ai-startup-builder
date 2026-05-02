@@ -28,7 +28,7 @@ export function LivePreviewCard({ liveUrl, projectName }: LivePreviewCardProps):
       particleCount: 80,
       spread: 80,
       origin: { y: 0.6 },
-      colors: ['#8B6F47', '#D4C4A8', '#16A34A', '#F5F0E8'],
+      colors: ['#8B6F47', '#D4C4A8', '#16A34A', '#F2EDEB'],
     })
   }, [])
 

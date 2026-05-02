@@ -12,7 +12,7 @@ interface WireframeGridProps {
 const blockColorMap: Record<WireframeBlock['type'], string> = {
   nav: '#D8D0F0',
   hero: '#D0E8D8',
-  content: '#E8DFD0',
+  content: '#D0C8C0',
   footer: '#D0D8E8',
   sidebar: '#F0E8D0',
   card: '#E8E8E8',

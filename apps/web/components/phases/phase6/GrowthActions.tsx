@@ -125,7 +125,7 @@ export function GrowthActions({ projectId, actions, playbookSteps }: GrowthActio
     () => (
       <div className="relative flex h-[72px] w-[72px] shrink-0 items-center justify-center">
         <svg width="72" height="72" viewBox="0 0 72 72" className="absolute inset-0">
-          <circle cx="36" cy="36" r="30" fill="none" stroke="#E8DFD0" strokeWidth="8" />
+          <circle cx="36" cy="36" r="30" fill="none" stroke="#D0C8C0" strokeWidth="8" />
           <circle
             cx="36"
             cy="36"

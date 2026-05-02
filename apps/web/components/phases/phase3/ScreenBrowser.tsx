@@ -19,7 +19,7 @@ export function ScreenBrowser({ wireframes, generatingScreen, onGenerate }: Scre
   const setSelectedScreen = useCanvasStore((state) => state.setSelectedScreen)
 
   return (
-    <aside className="w-[240px] shrink-0 border-r border-divider bg-[#EDE5D8] p-3">
+    <aside className="w-[240px] shrink-0 border-r border-divider bg-sidebar p-3">
       <p className="px-1 text-[10px] font-bold uppercase tracking-[0.08em] text-muted">Screens</p>
       <div className="mt-2 space-y-1">
         {wireframes.map((wireframe) => {

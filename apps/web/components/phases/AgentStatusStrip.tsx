@@ -33,7 +33,7 @@ export function AgentStatusStrip({ agents, phase = 1 }: AgentStatusStripProps): 
         particleCount: 60,
         spread: 75,
         ticks: 100,
-        colors: ['#8B6F47', '#16A34A', '#EDE5D8', '#C4A882'],
+        colors: ['#8B6F47', '#16A34A', '#E0DAD3', '#C4A882'],
       })
     })()
   }, [allComplete, phase])

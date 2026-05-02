@@ -32,7 +32,7 @@ export function ValidationScoreCircle({ score, size = 120 }: { score: number; si
       aria-label={`Validation score: ${score} out of 100`}
     >
       <svg viewBox="0 0 120 120" width={size} height={size}>
-        <circle cx="60" cy="60" r={radius} stroke="#E8DFD0" strokeWidth="8" fill="none" />
+        <circle cx="60" cy="60" r={radius} stroke="#D0C8C0" strokeWidth="8" fill="none" />
         <circle
           ref={scoreCircleRef}
           cx="60"
