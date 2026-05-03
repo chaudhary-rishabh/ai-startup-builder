@@ -18,7 +18,7 @@ export function ShellLayout({ children }: { children: React.ReactNode }): JSX.El
     () =>
       cn(
         'flex-1 overflow-y-auto transition-colors duration-[400ms]',
-        isDev ? 'bg-slate-950 text-slate-100' : 'bg-bg text-heading',
+        isDev ? 'bg-bg text-heading' : 'bg-bg text-heading',
         isModeTransitioning ? 'pointer-events-none select-none' : '',
       ),
     [isDev, isModeTransitioning],

@@ -110,7 +110,7 @@ function SidebarContent({ collapsed, onNavigate, onToggleCollapse }: { collapsed
           </button>
         </div>
 
-        <p className={`mb-2 text-[10px] uppercase tracking-[0.08em] text-muted ${collapsed ? 'px-2' : 'px-3'}`}>{collapsed ? 'P' : 'PROJECTS'}</p>
+        <p className={`mb-2 font-display text-[10px] uppercase tracking-[0.08em] text-muted ${collapsed ? 'px-2' : 'px-3'}`}>{collapsed ? 'P' : 'PROJECTS'}</p>
         <div className={`space-y-1 ${collapsed ? 'px-2' : 'px-3'}`}>
           {filteredProjects.map((project) => {
             const active = pathname?.includes(`/project/${project.id}`) ?? false
@@ -126,7 +126,7 @@ function SidebarContent({ collapsed, onNavigate, onToggleCollapse }: { collapsed
                   onNavigate()
                 }}
               >
-                {!collapsed ? <span className="min-w-0 flex-1 truncate text-[13px] text-heading">{project.name}</span> : null}
+                {!collapsed ? <span className="min-w-0 flex-1 truncate font-display text-[13px] text-heading">{project.name}</span> : null}
                 {!collapsed ? <span className="text-[10px] text-muted">P{project.currentPhase}</span> : null}
               </button>
             )
@@ -135,7 +135,7 @@ function SidebarContent({ collapsed, onNavigate, onToggleCollapse }: { collapsed
 
         <button
           type="button"
-          className={`mt-4 flex items-center justify-between text-[10px] uppercase tracking-[0.08em] text-muted ${collapsed ? 'px-2' : 'px-3'}`}
+          className={`mt-4 flex items-center justify-between font-display text-[10px] uppercase tracking-[0.08em] text-muted ${collapsed ? 'px-2' : 'px-3'}`}
           onClick={() => setStarredOpen((current) => !current)}
         >
           <span>{collapsed ? <Star className="w-3 h-3" /> : 'STARRED'}</span>
@@ -160,7 +160,7 @@ function SidebarContent({ collapsed, onNavigate, onToggleCollapse }: { collapsed
                       onNavigate()
                     }}
                   >
-                    {!collapsed ? <span className="min-w-0 flex-1 truncate text-[13px]">{project.name}</span> : null}
+                    {!collapsed ? <span className="min-w-0 flex-1 truncate font-display text-[13px]">{project.name}</span> : null}
                     <Star className="h-3 w-3 text-muted" />
                   </button>
                 ))}
@@ -169,14 +169,14 @@ function SidebarContent({ collapsed, onNavigate, onToggleCollapse }: { collapsed
           ) : null}
         </AnimatePresence>
 
-        <p className={`mt-4 text-[10px] uppercase tracking-[0.08em] text-muted ${collapsed ? 'px-2' : 'px-3'}`}>{collapsed ? 'R' : 'RAG AI'}</p>
+        <p className={`mt-4 font-display text-[10px] uppercase tracking-[0.08em] text-muted ${collapsed ? 'px-2' : 'px-3'}`}>{collapsed ? 'R' : 'RAG AI'}</p>
         <button
           type="button"
           className={`mt-1 flex h-9 w-full items-center gap-2 rounded-md px-2 hover:bg-divider ${collapsed ? 'justify-center' : ''}`}
           onClick={() => setRagModalOpen(true)}
         >
           <Brain className="h-4 w-4 flex-shrink-0" />
-          {!collapsed ? <span className="flex-1 text-left text-[13px]">My AI Brain</span> : null}
+          {!collapsed ? <span className="flex-1 text-left font-display text-[13px]">My AI Brain</span> : null}
           <RagDot status={ragStatus} />
         </button>
 
@@ -194,7 +194,7 @@ function SidebarContent({ collapsed, onNavigate, onToggleCollapse }: { collapsed
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand text-[10px] text-white">
                   {user?.name?.slice(0, 1).toUpperCase() ?? 'U'}
                 </span>
-                <span className="text-xs text-heading">Sign out</span>
+                <span className="font-display text-xs text-heading">Sign out</span>
               </button>
               <span className="rounded-chip bg-output px-2 py-1 text-[10px] uppercase text-muted">{user?.plan ?? 'free'}</span>
             </>
