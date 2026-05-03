@@ -28,15 +28,17 @@ rag.use('/*', jwt)
 rag.post('/documents', aiRateLimiter, async (c) => proxy(c))
 rag.get('/documents', generalRateLimiter, async (c) => proxy(c))
 rag.delete('/documents/:docId', generalRateLimiter, async (c) => proxy(c))
-rag.get('/documents/:docId/status', generalRateLimiter, async (c) => proxy(c))
-rag.post('/documents/:docId/reindex', aiRateLimiter, async (c) => proxy(c))
+rag.get('/documents/:docId/text', generalRateLimiter, async (c) => proxy(c))
+
+// URL ingestion
+rag.post('/ingest-url', aiRateLimiter, async (c) => proxy(c))
 
 // RAG query (triggers embedding + vector search)
 rag.post('/query', aiRateLimiter, async (c) => proxy(c))
 
 // Namespace management
-rag.get('/namespaces', generalRateLimiter, async (c) => proxy(c))
-rag.delete('/namespaces/:ns', generalRateLimiter, async (c) => proxy(c))
+rag.get('/namespace', generalRateLimiter, async (c) => proxy(c))
+rag.delete('/namespace', generalRateLimiter, async (c) => proxy(c))
 
 // Stats
 rag.get('/stats', generalRateLimiter, async (c) => proxy(c))
