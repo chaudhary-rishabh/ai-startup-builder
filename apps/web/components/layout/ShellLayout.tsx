@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react'
 import { Menu } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
+import { ChatAssistant } from '@/components/chat/ChatAssistant'
 import { Sidebar } from '@/components/layout/Sidebar'
 import { ResizeHandle } from '@/components/layout/ResizeHandle'
 import { useProjectStore } from '@/store/projectStore'
@@ -44,6 +45,7 @@ export function ShellLayout({ children }: { children: React.ReactNode }): JSX.El
         </button>
         {children}
       </main>
+      <ChatAssistant />
     </div>
   )
 }
